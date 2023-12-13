@@ -1,0 +1,92 @@
+D:\ProgramData\anaconda3\envs\MSTFormer\python.exe E:\Users\cc\SchoolTime\Master\03-Code\02-PycharmProjects\01-OpenReport\InformerVessels\main_informer.py --model informer --data SHIP --freq t --seq_len 72 --label_len 48 --pred_len 24
+Args in experiment:
+Namespace(model='informer', data='SHIP', root_path='./data/', data_path='ETTh1.csv', features='M', target='OT', freq='t', checkpoints='./checkpoints/', seq_len=72, label_len=48, pred_len=24, enc_in=2, dec_in=2, c_out=2, d_model=512, n_heads=8, e_layers=2, d_layers=1, s_layers=[3, 2, 1], d_ff=2048, factor=5, padding=0, distil=True, dropout=0.05, attn='prob', embed='timeF', activation='gelu', output_attention=False, do_predict=False, mix=True, cols=None, num_workers=0, itr=2, train_epochs=6, batch_size=32, patience=3, learning_rate=0.0001, des='test', loss='mse', lradj='type1', use_amp=False, inverse=False, use_gpu=False, gpu=0, use_multi_gpu=False, devices='0,1,2,3', read_processed='./data/MSTF/', detail_freq='t')
+Use CPU
+>>>>>>>start training : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+data prepare:traintrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-train.pkl
+train 700
+data prepare:valtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-val.pkl
+val 100
+data prepare:testtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-test.pkl
+test 200
+Epoch: 1 cost time: 10.469398498535156
+Epoch: 1, Steps: 21 | Train Loss: 1.0270535 Vali Loss: 1.3346968 Test Loss: 0.9386564
+Validation loss decreased (inf --> 1.334697).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 11.661523580551147
+Epoch: 2, Steps: 21 | Train Loss: 0.9773633 Vali Loss: 1.3322276 Test Loss: 0.8900328
+Validation loss decreased (1.334697 --> 1.332228).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 10.777196884155273
+Epoch: 3, Steps: 21 | Train Loss: 0.9328157 Vali Loss: 1.1920938 Test Loss: 0.8681464
+Validation loss decreased (1.332228 --> 1.192094).  Saving model ...
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 11.150418281555176
+Epoch: 4, Steps: 21 | Train Loss: 0.9472982 Vali Loss: 1.3286124 Test Loss: 0.8707779
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 11.707045555114746
+Epoch: 5, Steps: 21 | Train Loss: 0.9132662 Vali Loss: 1.2795672 Test Loss: 0.8685551
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 6.25e-06
+Epoch: 6 cost time: 10.624278783798218
+Epoch: 6, Steps: 21 | Train Loss: 0.9436290 Vali Loss: 1.3223734 Test Loss: 0.8681338
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+data prepare:testtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-test.pkl
+test 200
+test shape: (6, 32, 24, 2) (6, 32, 24, 2)
+test shape: (192, 24, 2) (192, 24, 2)
+mse:0.8730219006538391, mae:0.35667678713798523
+Use CPU
+>>>>>>>start training : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_1>>>>>>>>>>>>>>>>>>>>>>>>>>
+data prepare:traintrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-train.pkl
+train 700
+data prepare:valtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-val.pkl
+val 100
+data prepare:testtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-test.pkl
+test 200
+Epoch: 1 cost time: 10.764575242996216
+Epoch: 1, Steps: 21 | Train Loss: 1.0476252 Vali Loss: 1.2538214 Test Loss: 0.8879929
+Validation loss decreased (inf --> 1.253821).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 11.981343507766724
+Epoch: 2, Steps: 21 | Train Loss: 0.9438237 Vali Loss: 1.1649653 Test Loss: 0.8685153
+Validation loss decreased (1.253821 --> 1.164965).  Saving model ...
+Updating learning rate to 5e-05
+Traceback (most recent call last):
+  File "E:\Users\cc\SchoolTime\Master\03-Code\02-PycharmProjects\01-OpenReport\InformerVessels\main_informer.py", line 106, in <module>
+    exp.train(setting)
+  File "E:\Users\cc\SchoolTime\Master\03-Code\02-PycharmProjects\01-OpenReport\InformerVessels\exp\exp_informer.py", line 160, in train
+    pred, true = self._process_one_batch(
+  File "E:\Users\cc\SchoolTime\Master\03-Code\02-PycharmProjects\01-OpenReport\InformerVessels\exp\exp_informer.py", line 288, in _process_one_batch
+    outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
+  File "D:\ProgramData\anaconda3\envs\MSTFormer\lib\site-packages\torch\nn\modules\module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "E:\Users\cc\SchoolTime\Master\03-Code\02-PycharmProjects\01-OpenReport\InformerVessels\models\model.py", line 70, in forward
+    enc_out, attns = self.encoder(enc_out, attn_mask=enc_self_mask)
+  File "D:\ProgramData\anaconda3\envs\MSTFormer\lib\site-packages\torch\nn\modules\module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "E:\Users\cc\SchoolTime\Master\03-Code\02-PycharmProjects\01-OpenReport\InformerVessels\models\encoder.py", line 68, in forward
+    x, attn = attn_layer(x, attn_mask=attn_mask)
+  File "D:\ProgramData\anaconda3\envs\MSTFormer\lib\site-packages\torch\nn\modules\module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "E:\Users\cc\SchoolTime\Master\03-Code\02-PycharmProjects\01-OpenReport\InformerVessels\models\encoder.py", line 51, in forward
+    y = self.dropout(self.activation(self.conv1(y.transpose(-1,1))))
+  File "D:\ProgramData\anaconda3\envs\MSTFormer\lib\site-packages\torch\nn\modules\module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "D:\ProgramData\anaconda3\envs\MSTFormer\lib\site-packages\torch\nn\modules\conv.py", line 302, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "D:\ProgramData\anaconda3\envs\MSTFormer\lib\site-packages\torch\nn\modules\conv.py", line 298, in _conv_forward
+    return F.conv1d(input, weight, bias, self.stride,
+KeyboardInterrupt
+
+进程已结束,退出代码-1073741510 (0xC000013A: interrupted by Ctrl+C)

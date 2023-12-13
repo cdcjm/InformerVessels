@@ -1,4 +1,4 @@
-from data.data_loader import Dataset_ETT_hour, Dataset_ETT_minute, Dataset_Custom, Dataset_Pred
+from data.data_loader import Dataset_ETT_hour, Dataset_ETT_minute, Dataset_Custom, Dataset_Pred, Dataset_SHIP
 from exp.exp_basic import Exp_Basic
 from models.model import Informer, InformerStack
 
@@ -69,6 +69,7 @@ class Exp_Informer(Exp_Basic):
             'ECL':Dataset_Custom,
             'Solar':Dataset_Custom,
             'custom':Dataset_Custom,
+            'SHIP': Dataset_SHIP,
         }
         Data = data_dict[self.args.data]
         timeenc = 0 if args.embed!='timeF' else 1
@@ -83,14 +84,18 @@ class Exp_Informer(Exp_Basic):
         data_set = Data(
             root_path=args.root_path,
             data_path=args.data_path,
+            # data_type=args.data_type,
             flag=flag,
             size=[args.seq_len, args.label_len, args.pred_len],
+            # prob_use=args.prob_use,
             features=args.features,
             target=args.target,
             inverse=args.inverse,
             timeenc=timeenc,
             freq=freq,
-            cols=args.cols
+            cols=args.cols,
+            read_processed=args.read_processed,
+            # logger=self.logger
         )
         print(flag, len(data_set))
         data_loader = DataLoader(
@@ -113,7 +118,7 @@ class Exp_Informer(Exp_Basic):
     def vali(self, vali_data, vali_loader, criterion):
         self.model.eval()
         total_loss = []
-        for i, (batch_x,batch_y,batch_x_mark,batch_y_mark) in enumerate(vali_loader):
+        for i, (batch_x,batch_y,batch_x_mark,batch_y_mark,_) in enumerate(vali_loader):
             pred, true = self._process_one_batch(
                 vali_data, batch_x, batch_y, batch_x_mark, batch_y_mark)
             loss = criterion(pred.detach().cpu(), true.detach().cpu())
@@ -148,7 +153,7 @@ class Exp_Informer(Exp_Basic):
             
             self.model.train()
             epoch_time = time.time()
-            for i, (batch_x,batch_y,batch_x_mark,batch_y_mark) in enumerate(train_loader):
+            for i, (batch_x,batch_y,batch_x_mark,batch_y_mark,_) in enumerate(train_loader):
                 iter_count += 1
                 
                 model_optim.zero_grad()
@@ -200,7 +205,7 @@ class Exp_Informer(Exp_Basic):
         preds = []
         trues = []
         
-        for i, (batch_x,batch_y,batch_x_mark,batch_y_mark) in enumerate(test_loader):
+        for i, (batch_x,batch_y,batch_x_mark,batch_y_mark,_) in enumerate(test_loader):
             pred, true = self._process_one_batch(
                 test_data, batch_x, batch_y, batch_x_mark, batch_y_mark)
             preds.append(pred.detach().cpu().numpy())
@@ -239,7 +244,7 @@ class Exp_Informer(Exp_Basic):
         
         preds = []
         
-        for i, (batch_x,batch_y,batch_x_mark,batch_y_mark) in enumerate(pred_loader):
+        for i, (batch_x,batch_y,batch_x_mark,batch_y_mark,_) in enumerate(pred_loader):
             pred, true = self._process_one_batch(
                 pred_data, batch_x, batch_y, batch_x_mark, batch_y_mark)
             preds.append(pred.detach().cpu().numpy())

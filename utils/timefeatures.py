@@ -147,5 +147,7 @@ def time_features(dates, timeenc=1, freq='h'):
         }
         return dates[freq_map[freq.lower()]].values
     if timeenc==1:
-        dates = pd.to_datetime(dates.date.values)
-        return np.vstack([feat(dates) for feat in time_features_from_frequency_str(freq)]).transpose(1,0)
+        # dates = pd.to_datetime(dates.date.values)
+        # return np.vstack([feat(dates) for feat in time_features_from_frequency_str(freq)]).transpose(1,0)
+        dates = pd.to_datetime(dates['BaseDateTime'].values)
+        return np.vstack([feat(dates) for feat in time_features_from_frequency_str(freq)]).transpose(1, 0)
