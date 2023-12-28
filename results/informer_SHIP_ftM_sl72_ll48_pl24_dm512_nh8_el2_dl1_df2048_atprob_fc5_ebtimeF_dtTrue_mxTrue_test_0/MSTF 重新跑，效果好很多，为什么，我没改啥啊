@@ -1,0 +1,73 @@
+/home/xuhh/anaconda3/envs/Informer3.7/bin/python3 /home/xuhh/hhh/InformerVessels/main_informer.py --model informer --data SHIP --freq t --seq_len 72 --label_len 48 --pred_len 24
+Args in experiment:
+Namespace(activation='gelu', attn='prob', batch_size=32, c_out=2, checkpoints='./checkpoints/', cols=None, d_ff=2048, d_layers=1, d_model=512, data='SHIP', data_path='inSHIP.csv', dec_in=2, des='test', detail_freq='t', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=2, factor=5, features='M', freq='t', gpu=0, inverse=False, itr=2, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mix=True, model='informer', n_heads=8, num_workers=0, output_attention=False, padding=0, patience=3, pred_len=24, root_path='./data/', s_layers=[3, 2, 1], seq_len=72, target='LON', train_epochs=6, use_amp=False, use_gpu=True, use_multi_gpu=False)
+Use GPU: cuda:0
+>>>>>>>start training : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 778
+val 103
+test 226
+Epoch: 1 cost time: 1.745460033416748
+Epoch: 1, Steps: 24 | Train Loss: 0.3200389 Vali Loss: 0.0503938 Test Loss: 0.0550085
+Validation loss decreased (inf --> 0.050394).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 1.4050703048706055
+Epoch: 2, Steps: 24 | Train Loss: 0.0937641 Vali Loss: 0.0160157 Test Loss: 0.0165907
+Validation loss decreased (0.050394 --> 0.016016).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 1.4108028411865234
+Epoch: 3, Steps: 24 | Train Loss: 0.0700529 Vali Loss: 0.0016959 Test Loss: 0.0036517
+Validation loss decreased (0.016016 --> 0.001696).  Saving model ...
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 1.51823091506958
+Epoch: 4, Steps: 24 | Train Loss: 0.0597987 Vali Loss: 0.0018912 Test Loss: 0.0030640
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 1.5084662437438965
+Epoch: 5, Steps: 24 | Train Loss: 0.0558402 Vali Loss: 0.0013785 Test Loss: 0.0031688
+Validation loss decreased (0.001696 --> 0.001378).  Saving model ...
+Updating learning rate to 6.25e-06
+Epoch: 6 cost time: 1.4464623928070068
+Epoch: 6, Steps: 24 | Train Loss: 0.0552856 Vali Loss: 0.0029562 Test Loss: 0.0051538
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 3.125e-06
+>>>>>>>testing : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 226
+test shape: (7, 32, 24, 2) (7, 32, 24, 2)
+test shape: (224, 24, 2) (224, 24, 2)
+mse:0.0033722417429089546, mae:0.03146866336464882
+Use GPU: cuda:0
+>>>>>>>start training : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_1>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 778
+val 103
+test 226
+Epoch: 1 cost time: 1.499624490737915
+Epoch: 1, Steps: 24 | Train Loss: 0.3016623 Vali Loss: 0.0724293 Test Loss: 0.0720201
+Validation loss decreased (inf --> 0.072429).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 1.566392421722412
+Epoch: 2, Steps: 24 | Train Loss: 0.0827081 Vali Loss: 0.0067295 Test Loss: 0.0049487
+Validation loss decreased (0.072429 --> 0.006729).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 1.482283353805542
+Epoch: 3, Steps: 24 | Train Loss: 0.0585722 Vali Loss: 0.0044945 Test Loss: 0.0049134
+Validation loss decreased (0.006729 --> 0.004495).  Saving model ...
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 1.530134916305542
+Epoch: 4, Steps: 24 | Train Loss: 0.0564436 Vali Loss: 0.0050816 Test Loss: 0.0044007
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 1.4532279968261719
+Epoch: 5, Steps: 24 | Train Loss: 0.0526608 Vali Loss: 0.0013198 Test Loss: 0.0014239
+Validation loss decreased (0.004495 --> 0.001320).  Saving model ...
+Updating learning rate to 6.25e-06
+Epoch: 6 cost time: 1.450584888458252
+Epoch: 6, Steps: 24 | Train Loss: 0.0514915 Vali Loss: 0.0028533 Test Loss: 0.0018589
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 3.125e-06
+>>>>>>>testing : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 226
+test shape: (7, 32, 24, 2) (7, 32, 24, 2)
+test shape: (224, 24, 2) (224, 24, 2)
+mse:0.0014055718202143908, mae:0.027885209769010544
+
+进程已结束,退出代码0

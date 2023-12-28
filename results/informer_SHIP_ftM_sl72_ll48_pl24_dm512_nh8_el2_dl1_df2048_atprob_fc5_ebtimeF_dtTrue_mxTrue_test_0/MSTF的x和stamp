@@ -90,3 +90,101 @@ Traceback (most recent call last):
 KeyboardInterrupt
 
 进程已结束,退出代码-1073741510 (0xC000013A: interrupted by Ctrl+C)
+
+/home/xuhh/anaconda3/envs/Informer3.7/bin/python3 /home/xuhh/hhh/InformerVessels/main_informer.py --model informer --data SHIP --freq h --seq_len 72 --label_len 48 --pred_len 24 --batch_size 200
+Args in experiment:
+Namespace(activation='gelu', attn='prob', batch_size=200, c_out=2, checkpoints='./checkpoints/', cols=None, d_ff=2048, d_layers=1, d_model=512, data='SHIP', data_path='ETTh1.csv', dec_in=2, des='test', detail_freq='h', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=2, factor=5, features='M', freq='h', gpu=0, inverse=False, itr=2, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mix=True, model='informer', n_heads=8, num_workers=0, output_attention=False, padding=0, patience=3, pred_len=24, read_processed='./data/MSTF/', root_path='./data/', s_layers=[3, 2, 1], seq_len=72, target='OT', train_epochs=6, use_amp=False, use_gpu=True, use_multi_gpu=False)
+Use GPU: cuda:0
+>>>>>>>start training : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+<class 'data.data_loader.Dataset_SHIP'>
+data prepare:traintrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-train.pkl
+train 700
+<class 'data.data_loader.Dataset_SHIP'>
+data prepare:valtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-val.pkl
+val 100
+<class 'data.data_loader.Dataset_SHIP'>
+data prepare:testtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-test.pkl
+test 200
+Epoch: 1 cost time: 1.250230312347412
+Epoch: 1, Steps: 3 | Train Loss: 1.2102879 Vali Loss: nan Test Loss: 0.9699400
+Validation loss decreased (inf --> nan).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 0.8952536582946777
+Epoch: 2, Steps: 3 | Train Loss: 1.0526690 Vali Loss: nan Test Loss: 0.9580369
+Validation loss decreased (nan --> nan).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 0.8997247219085693
+Epoch: 3, Steps: 3 | Train Loss: 1.0063717 Vali Loss: nan Test Loss: 0.9620675
+Validation loss decreased (nan --> nan).  Saving model ...
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 0.9063911437988281
+Epoch: 4, Steps: 3 | Train Loss: 0.8690493 Vali Loss: nan Test Loss: 0.9859539
+Validation loss decreased (nan --> nan).  Saving model ...
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 0.90283203125
+Epoch: 5, Steps: 3 | Train Loss: 0.9869240 Vali Loss: nan Test Loss: 0.9652939
+Validation loss decreased (nan --> nan).  Saving model ...
+Updating learning rate to 6.25e-06
+Epoch: 6 cost time: 0.8964395523071289
+Epoch: 6, Steps: 3 | Train Loss: 0.9373032 Vali Loss: nan Test Loss: 0.9417145
+Validation loss decreased (nan --> nan).  Saving model ...
+Updating learning rate to 3.125e-06
+>>>>>>>testing : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<class 'data.data_loader.Dataset_SHIP'>
+data prepare:testtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-test.pkl
+test 200
+test shape: (1, 200, 24, 2) (1, 200, 24, 2)
+test shape: (200, 24, 2) (200, 24, 2)
+mse:0.939780592918396, mae:0.42795899510383606
+Use GPU: cuda:0
+>>>>>>>start training : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_1>>>>>>>>>>>>>>>>>>>>>>>>>>
+<class 'data.data_loader.Dataset_SHIP'>
+data prepare:traintrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-train.pkl
+train 700
+<class 'data.data_loader.Dataset_SHIP'>
+data prepare:valtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-val.pkl
+val 100
+<class 'data.data_loader.Dataset_SHIP'>
+data prepare:testtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-test.pkl
+test 200
+Epoch: 1 cost time: 0.9186372756958008
+Epoch: 1, Steps: 3 | Train Loss: 1.1689012 Vali Loss: nan Test Loss: 1.3395571
+Validation loss decreased (inf --> nan).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 0.8981058597564697
+Epoch: 2, Steps: 3 | Train Loss: 1.1309478 Vali Loss: nan Test Loss: 0.9959944
+Validation loss decreased (nan --> nan).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 0.8927028179168701
+Epoch: 3, Steps: 3 | Train Loss: 1.0583117 Vali Loss: nan Test Loss: 0.9313765
+Validation loss decreased (nan --> nan).  Saving model ...
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 0.9078998565673828
+Epoch: 4, Steps: 3 | Train Loss: 0.9934369 Vali Loss: nan Test Loss: 0.9510502
+Validation loss decreased (nan --> nan).  Saving model ...
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 0.9026021957397461
+Epoch: 5, Steps: 3 | Train Loss: 0.9688348 Vali Loss: nan Test Loss: 0.9537688
+Validation loss decreased (nan --> nan).  Saving model ...
+Updating learning rate to 6.25e-06
+Epoch: 6 cost time: 0.9271903038024902
+Epoch: 6, Steps: 3 | Train Loss: 0.9578848 Vali Loss: nan Test Loss: 0.9393541
+Validation loss decreased (nan --> nan).  Saving model ...
+Updating learning rate to 3.125e-06
+>>>>>>>testing : informer_SHIP_ftM_sl72_ll48_pl24_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_test_1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<class 'data.data_loader.Dataset_SHIP'>
+data prepare:testtrain: 0, val: 1, test: 2
+Read processed data from ./data/MSTF/-test.pkl
+test 200
+test shape: (1, 200, 24, 2) (1, 200, 24, 2)
+test shape: (200, 24, 2) (200, 24, 2)
+mse:0.9391493797302246, mae:0.4216696619987488
+
+进程已结束,退出代码0

@@ -78,6 +78,7 @@ data_parser = {
     'ECL':{'data':'ECL.csv','T':'MT_320','M':[321,321,321],'S':[1,1,1],'MS':[321,321,1]},
     'Solar':{'data':'solar_AL.csv','T':'POWER_136','M':[137,137,137],'S':[1,1,1],'MS':[137,137,1]},
     'ship': {'data': 'ALL', 'T': 'LON', 'M': [2, 2, 2], 'S': [1, 1, 1], 'MS': [3, 3, 1]},
+    'custom': {'data': 'inSHIP.csv', 'T': 'LON', 'M': [2, 2, 2], 'S': [1, 1, 1], 'MS': [2, 2, 1]},
 }
 if args.data in data_parser.keys():
     data_info = data_parser[args.data]
